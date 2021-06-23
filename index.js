@@ -1,6 +1,6 @@
-const Manager = require('./lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
 
 // Inquirer package for questions/answers and fs to write the html
 const inquirer = require('inquirer');
