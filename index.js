@@ -21,23 +21,23 @@ inquirer
   .prompt([
     {
       type: 'input',
-      message: 'Enter the team managers name',
+      message: "Enter the team manager's name",
       name: 'managerName',
     },
      {
       type: 'input',
-      message: 'Enter the team managers ID',
+      message: "Enter the team manager's ID",
       name: 'managerId',
     },
      {
       type: 'input',
-      message: 'Enter the team managers email',
+      message: "Enter the team manager's email",
       name: 'managerEmail',
     },
      {
       type: 'input',
-      message: 'Enter the team managers office number',
-      name: 'managerOfficeNumber',
+      message: "Enter the team manager's office number",
+      name: 'managerOfficeNum',
     },
     {
       type: 'list',
@@ -46,19 +46,53 @@ inquirer
       name: 'action',
     },
     {
-      type: 'input',
-      name: 'engineerGithub',
-      message: 'Enter your GitHub Username.',
-    },
-    {
-      type: 'input',
-      name: 'email',
-      message: 'Enter your E-mail address.',
-    },
+        type: 'input',
+        message: "Enter the engineer's name",
+        name: 'engineerName',
+      },
+       {
+        type: 'input',
+        message: "Enter the engineer's ID",
+        name: 'engineerId',
+      },
+       {
+        type: 'input',
+        message: "Enter the engineer's email",
+        name: 'engineerEmail',
+      },
+      {
+        type: "input",
+        message: "Enter the engineer's GitHub username",
+        name: "githubUsername"
+      },
+      {
+        type: 'input',
+        message: "Enter the intern's name",
+        name: 'internName',
+      },
+       {
+        type: 'input',
+        message: "Enter the intern's ID",
+        name: 'internId',
+      },
+       {
+        type: 'input',
+        message: "Enter the intern's email",
+        name: 'internEmail',
+      },
+      {
+        type: 'input',
+        message: "Enter the intern's school",
+        name: 'internSchool',
+      }
   ])
   .then((answers) => {
     // Use user feedback for... whatever!!
   })
   .catch((error) => {
-   console.error(error)
+    if (error.isTtyError) {
+      // Prompt couldn't be rendered in the current environment
+    } else {
+      // Something else went wrong
+    }
   });
