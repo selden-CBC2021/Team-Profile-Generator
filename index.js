@@ -5,7 +5,7 @@ const Intern = require('./lib/intern');
 // Inquirer package for questions/answers and fs to write the html
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateTeamProfile = './dist/generateProfile';
+const generatedTeamProfile = './dist/generateProfile.html';
 let employees = []
 
 
@@ -40,7 +40,9 @@ inquirer
     },
   ])
   .then(answers => {
-    fs.writeFileSync(generateTeamProfile, "")
+    let manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNum);
+    employees.push(manager)
+    selectTeam(answers.action);
   })
 
 function addEngineer() {
@@ -74,7 +76,9 @@ function addEngineer() {
     },
   ])
   .then((answers) => {
-    generateHTML();
+    let engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.githubUsername);
+    employees.push(engineer)
+    selectTeam(answers.action);
   })
   .catch((error) => {
     if (error.isTtyError) {
@@ -83,7 +87,7 @@ function addEngineer() {
       // Something else went wrong
     }
   });
-
+}
   function addIntern() {
     inquirer
       .prompt([
@@ -105,7 +109,7 @@ function addEngineer() {
     {
       type: 'input',
       message: "Enter the intern's school",
-      name: 'internSchool',
+      name: 'school',
     },
     {
       type: 'list',
@@ -115,7 +119,10 @@ function addEngineer() {
     },
   ])
   .then((answers) => {
-    generateHTML();
+    let intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.school);
+    employees.push(intern);
+    selectTeam(answers.action);
+    
   })
   .catch((error) => {
     if (error.isTtyError) {
@@ -124,9 +131,20 @@ function addEngineer() {
       // Something else went wrong
     }
   });
-  }
 }
+  function selectTeam(choice) {
+  if (choice === "Engineer") {
+    addEngineer();
+  } else if (choice === "Intern") {
+    addIntern();
+  } else if (choice === "Done building" || employees.length == 4) {
+    generateHTML();
+  }
+};
+
 
 function generateHTML() {
-  fs.writeFileSync(generateTeamProfile, "")
+  fs.writeFileSync(generatedTeamProfile, "")
+  
 };
+
