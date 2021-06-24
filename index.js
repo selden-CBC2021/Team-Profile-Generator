@@ -5,7 +5,8 @@ const Intern = require('./lib/intern');
 // Inquirer package for questions/answers and fs to write the html
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generatePage = require('./dist/generateProfile');
+const generateTeamProfile = './dist/generateProfile';
+let employees = []
 
 
 
@@ -33,13 +34,19 @@ inquirer
     },
     {
       type: 'list',
-      message: 'What would you like to do?',
-      choices: ['Add an engineer', 'Add an intern', 'Done building'],
+      message: 'Which type of team member would you like to add?',
+      choices: ['Engineer', 'Intern', 'Done building'],
       name: 'action',
     },
+  ])
+  .then(answers => {
+    fs.writeFileSync(generateTeamProfile, "")
+  })
 
-
-    {
+function addEngineer() {
+  inquirer
+    .prompt([
+    { 
       type: 'input',
       message: "Enter the engineer's name",
       name: 'engineerName',
@@ -65,8 +72,21 @@ inquirer
       choices: ['Engineer', 'Intern', 'Done building'],
       name: 'action',
     },
+  ])
+  .then((answers) => {
+    generateHTML();
+  })
+  .catch((error) => {
+    if (error.isTtyError) {
+      // Prompt couldn't be rendered in the current environment
+    } else {
+      // Something else went wrong
+    }
+  });
 
-
+  function addIntern() {
+    inquirer
+      .prompt([
     {
       type: 'input',
       message: "Enter the intern's name",
@@ -89,13 +109,13 @@ inquirer
     },
     {
       type: 'list',
-      message: 'What would you like to do?',
-      choices: ['Add an engineer', 'Add an intern', 'Done building'],
+      message: 'Which type of team member would you like to add?',
+      choices: ['Engineer', 'Intern', 'Done building'],
       name: 'action',
     },
   ])
   .then((answers) => {
-    // Use user feedback for... whatever!!
+    generateHTML();
   })
   .catch((error) => {
     if (error.isTtyError) {
@@ -104,3 +124,9 @@ inquirer
       // Something else went wrong
     }
   });
+  }
+}
+
+function generateHTML() {
+  fs.writeFileSync(generateTeamProfile, "")
+};
