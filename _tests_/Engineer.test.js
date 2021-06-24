@@ -2,7 +2,7 @@ const Employee = require("../lib/employee");
 const Engineer = require("../lib/engineer");
 
 describe ("Engineer class", () => {
-    it("should return a new Engineer object containing the properties name, id, email, and GitHub username", () => {
+    it("should return a new Engineer class containing the properties name, id, email, and GitHub username", () => {
             const engineer = new Engineer("Bob", 21, "bob@email.com", "github.com/bobby");
 
             expect(engineer.name).toEqual("Bob");
