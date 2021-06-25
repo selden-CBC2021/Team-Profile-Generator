@@ -8,8 +8,6 @@ const fs = require('fs');
 const generatedTeamProfile = './dist/generateProfile.html';
 let employees = []
 
-
-
 inquirer
   .prompt([
     {
@@ -137,14 +135,49 @@ function addEngineer() {
     addEngineer();
   } else if (choice === "Intern") {
     addIntern();
-  } else if (choice === "Done building" || employees.length == 4) {
+  } else if (choice === "Done building") {
     generateHTML();
   }
 };
 
 
+function generateTemplateHtml() {
+  return `<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Team Profile</title>
+      <link rel="stylesheet" href="../src/generatedProfile.css">
+      <script src="https://kit.fontawesome.com/3708f4dee4.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+      <div class="navBar">
+          <h1 class="navBarTitle">The Team</h1>
+      </div>
+      <div class="container" id="box">`
+};
+function createEmployeeCard(employees) {
+return `<div class="employeeCard">
+<div class="employeeTitle">
+    <h3>${employees.getName()} - ${employees.getRole()} <i class="fas fa-user-tie"></i></h3>
+</div>
+<div class="employeeBody">
+    <ul>
+        <li>ID: 1</li>
+        <li>Email: <a href="mailto:someone@yoursite.com" target="_blank" rel="noopener noreferrer">Drew@gmail.com</a></li>
+        <li>Office Number: 1</li>
+    </ul>
+</div>
+</div>`
+}
+
+
 function generateHTML() {
+
   fs.writeFileSync(generatedTeamProfile, "")
-  
+  let htmlData = generateTemplateHtml();
+
 };
 

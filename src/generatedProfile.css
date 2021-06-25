@@ -4,7 +4,7 @@
     padding: 28px;
     color: white;
 }
-.card {
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
