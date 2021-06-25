@@ -1,0 +1,43 @@
+.navBar {
+   text-align: center;
+    background-color: rgb(189, 94, 113);
+    padding: 28px;
+    color: white;
+}
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.employeeCard {
+    margin: 3% 8px 8px 8px;
+    width: 350px;
+    height: 300px;
+    box-shadow: 3px 3px 3px 3px grey;
+    background-color: rgb(216, 212, 212);
+    
+
+}
+.employeeTitle {
+    text-align: center;
+    padding: 8px;
+    font-size: 24px;
+    background-color: blue;
+    color: white;
+}
+.employeeBody {
+    background-color: rgb(252, 250, 250);
+    margin: 5%;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    border: 5px solid #ddd;
+    font-size: 20px;
+  }
+  
+  ul li {
+    padding: 8px 16px;
+    border-bottom: 1px solid #ddd;
+  }
