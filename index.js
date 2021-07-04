@@ -9,7 +9,7 @@ const path = require('path')
 // destination where the html file will be generated
 const generatedTeamProfile = './dist/generatedTeamProfile.html';
 // empty array where employees will be held
-const render = require('./src/teamTemplate.js')
+const generateFinalHtml = require('./src/teamTemplate.js')
 let employees = []
 
 
@@ -153,12 +153,9 @@ function launchApp() {
 
   fs.writeFileSync(generatedTeamProfile, "")
 
-    // for(var i in employees){
-    //   let htmlData = createTeam(employees[i])
-    // }
-    // htmlData += generateFinalHtml()
-
-  fs.writeFileSync(generatedTeamProfile, render(employees))
+    
+    const html = generateFinalHtml(employees)
+  fs.writeFileSync(generatedTeamProfile, html, "utf-8");
   
 
   };

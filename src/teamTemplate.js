@@ -1,4 +1,4 @@
-const createTeam = team => {
+const createTeam = employees => {
 
     const createManager = manager => {
     return `
@@ -16,9 +16,10 @@ const createTeam = team => {
 </div>`
     }
     const createEngineer = engineer => {
-        return `<div class="employeeCard">
+        return `
+        <div class="employeeCard">
         <div class="employeeTitle">
-            <h3>${engineer.getName()} - ${engineer.getRole()} <i class="fas fa-user-tie"></i></h3>
+            <h3>${engineer.getName()} - ${engineer.getRole()} <i class="fas fa-file-export"></i></h3>
         </div>
         <div class="employeeBody">
         <ul>
@@ -30,9 +31,10 @@ const createTeam = team => {
 </div>`
     }
     const createIntern = intern => {
-        return `<div class="employeeCard">
+        return `
+        <div class="employeeCard">
         <div class="employeeTitle">
-            <h3>${intern.getName()} - ${intern.getRole()} <i class="fas fa-user-tie"></i></h3>
+            <h3>${intern.getName()} - ${intern.getRole()} <i class="fas fa-phone"></i></h3>
         </div>
         <div class="employeeBody">
             <ul>
@@ -43,27 +45,27 @@ const createTeam = team => {
         </div>
     </div>`
     }
-    const html = [];
+    const HTML = [];
 
-    html.push(team
+    HTML.push(employees
         .filter(employee => employee.getRole() === "Manager")
         .map(manager => createManager(manager))
     );
-    html.push(team
+    HTML.push(employees
         .filter(employee => employee.getRole() === "Engineer")
         .map(engineer => createEngineer(engineer))
         .join("")
     );
-    html.push(team
+    HTML.push(employees
         .filter(employee => employee.getRole() === "Intern")
         .map(intern => createIntern(intern))
         .join("")
     );
 
-    return html.join("");
+    return HTML.join("");
 }
 
-const generateFinalHtml = team => {
+const generateFinalHtml = employees => {
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -79,13 +81,11 @@ const generateFinalHtml = team => {
             <h1 class="navBarTitle">The Team</h1>
         </div>
         <div class="container">
-            <div class="row">
-                <div class="teamCard">
-                ${createTeam(team)}
+             ${createTeam(employees)}
             </div>
         </div>
     </div>
 </body>
 </html>`
   };
-  module.exports = {createTeam, generateFinalHtml}
+  module.exports = generateFinalHtml;
