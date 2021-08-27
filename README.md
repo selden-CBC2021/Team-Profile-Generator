@@ -12,6 +12,9 @@
   ## Usage
   --Once you have the required dependencies installed run 'node index' to start the app. You will be prompted with questions asking the details for each new employee. If the new entry is a manager then the office number will be asked. If the new entry is an engineer, the engineer's GitHub page will be asked. If the new entry is an intern, the intern's school will be asked. Once you have answered all prompts select 'done building' and an HTML page will be generated containing all the information about team you just input.
   ![alt text](assets/images/TeamProfileGenerator.png)
+
+  Check out the walkthrough video [here](https://youtu.be/kPWr7Uzl97E)
+  
   ## License
   --https://opensource.org/licenses/MIT
   <br />
