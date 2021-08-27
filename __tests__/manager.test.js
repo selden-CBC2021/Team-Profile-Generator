@@ -1,4 +1,3 @@
-const { describe } = require("yargs");
 const Manager = require("../lib/manager");
 
 describe("Manager class", () => {

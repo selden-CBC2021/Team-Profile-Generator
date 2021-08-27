@@ -56,6 +56,7 @@ function launchApp() {
       choices: ["Engineer", "Intern", "Done building"],
       name: "action",
     }
+    // switch case for the 3 choices, defaults to generateHTML
   ]).then(answers => {
     switch (answers.action) {
       case "Engineer":
@@ -150,7 +151,7 @@ function launchApp() {
 
 
   function generateHTML() {
-
+// if file exists make it blank
   fs.writeFileSync(generatedTeamProfile, "")
 
     
